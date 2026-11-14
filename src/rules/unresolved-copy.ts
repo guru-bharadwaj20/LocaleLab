@@ -47,7 +47,9 @@ export const COPY_PATTERNS: CopyPattern[] = [
   {
     name: "icu-placeholder",
     severity: "error",
-    match: (t) => /\{\s*(?:\d+|[A-Za-z_]\w*)\s*(?:,\s*(?:plural|select|number|date|time)[^{}]*)?\}/.exec(t)?.[0] ?? null,
+    match: (t) =>
+      /\{\s*(?:\d+|[A-Za-z_]\w*)\s*(?:,\s*(?:plural|select|selectordinal|number|date|time)[^{}]*(?:\{[^{}]*\}[^{}]*)*)?\}/.exec(t)?.[0] ??
+      null,
   },
   {
     name: "printf-placeholder",
