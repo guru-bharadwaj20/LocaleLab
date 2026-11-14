@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Northwind Outdoor</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!--
+    LocaleLab demo storefront.
+
+    The page translates itself from navigator.language (see i18n.js) and sets
+    <html lang> and dir correctly, so most of it is healthy. Six defects are
+    planted on purpose; each one is marked with a data-localelab-id so the
+    benchmark can tell a real catch from a lucky one. Search for "DEFECT".
+  -->
+  <header class="topbar">
+    <div class="wrap row">
+      <a class="brand" href="#" id="brand">Northwind Outdoor</a>
+      <nav class="nav" aria-label="Main">
+        <a href="#" data-i18n="nav.shop">Shop</a>
+        <a href="#" data-i18n="nav.stories">Stories</a>
+        <a href="#" data-i18n="nav.support">Support</a>
+      </nav>
+      <div class="account">
+        <!-- DEFECT 6: a label that must be translated is hard-coded in English. -->
+        <a href="#" id="signin" data-localelab-translate data-localelab-id="signin">Sign in</a>
+        <a href="#" class="cart" id="cart-link"><span data-i18n="nav.cart">Cart</span> <span class="count" data-localelab-ignore>3</span></a>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="hero" id="hero">
+      <div class="hero-copy">
+        <p class="eyebrow" data-i18n="hero.eyebrow">Winter collection</p>
+        <h1 data-i18n="hero.title">Built for the cold months ahead</h1>
+        <p class="lede" data-i18n="hero.lede">Insulated layers, waterproof shells and boots tested on the trail.</p>
+        <p class="sale">
+          <span data-i18n="hero.saleEnds">Sale ends</span>
+          <!-- DEFECT 1: the date is hard-coded in US format for every locale. -->
+          <time datetime="2026-11-11T12:00:00Z" data-localelab-date="2026-11-11T12:00:00Z" data-localelab-id="promo-ends">Nov 11, 2026</time>
+        </p>
+        <!-- DEFECT 4: the badge translates but lives in a box sized for English. -->
+        <span class="badge" id="shipping-badge" data-i18n="shipping.badge" data-localelab-translate data-localelab-id="shipping-badge">Free shipping over $50</span>
+      </div>
+      <figure class="hero-art" aria-hidden="true"></figure>
+    </section>
+
+    <section class="products" id="products">
+      <h2 data-i18n="products.title">Featured gear</h2>
+      <div class="grid">
+        <article class="card">
+          <div class="thumb thumb-a"></div>
+          <h3 id="product-1">Ridgeline Parka</h3>
+          <p data-i18n="products.parka">Recycled down fill, rated to -20 degrees.</p>
+          <!-- DEFECT 3: the headline price is a hard-coded US string. -->
+          <p class="price" data-localelab-currency="USD:1234.56" data-localelab-id="hero-price">$1,234.56</p>
+        </article>
+        <article class="card">
+          <div class="thumb thumb-b"></div>
+          <h3 id="product-2">Summit Shell</h3>
+          <p data-i18n="products.shell">Three-layer waterproof fabric with pit zips.</p>
+          <!-- Healthy: formatted by the page with Intl, and marked so LocaleLab verifies it. -->
+          <p class="price" data-fmt-currency="USD:349" data-localelab-currency="USD:349" data-localelab-id="shell-price">$349.00</p>
+        </article>
+        <article class="card">
+          <div class="thumb thumb-c"></div>
+          <h3 id="product-3">Trailhead Boots</h3>
+          <p data-i18n="products.boots">Vibram sole and a full-grain leather upper.</p>
+          <p class="price" data-fmt-currency="USD:189.5" data-localelab-currency="USD:189.5" data-localelab-id="boots-price">$189.50</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="trust" id="trust">
+      <div class="stat">
+        <!-- DEFECT 2: the review count is a hard-coded US-grouped number. -->
+        <strong data-localelab-number="1234567.89" data-localelab-id="reviews-count">1,234,567.89</strong>
+        <span data-i18n="trust.reviews">kilometres walked by our testers</span>
+      </div>
+      <div class="stat">
+        <strong data-fmt-number="48213" data-localelab-number="48213" data-localelab-id="members-count">48,213</strong>
+        <span data-i18n="trust.members">members in the repair programme</span>
+      </div>
+      <div class="stat">
+        <strong data-fmt-date="2026-12-24" data-localelab-date="2026-12-24" data-localelab-id="delivery-date">Dec 24, 2026</strong>
+        <span data-i18n="trust.delivery">last order date for holiday delivery</span>
+      </div>
+    </section>
+
+    <section class="checkout" id="checkout">
+      <h2 data-i18n="checkout.title">Ready when you are</h2>
+      <p data-i18n="checkout.body">Your cart is saved across devices. Pay with card, PayPal or bank transfer.</p>
+      <!-- DEFECT 5: the key is missing from every dictionary, so the raw key leaks into the page. -->
+      <button type="button" class="cta" id="checkout-cta" data-i18n="checkout.cta.label" data-localelab-id="checkout-cta">Proceed to checkout</button>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap row">
+      <span id="copyright" data-localelab-ignore>&copy; 2026 Northwind Outdoor</span>
+      <nav class="nav" aria-label="Legal">
+        <a href="#" data-i18n="footer.privacy">Privacy</a>
+        <a href="#" data-i18n="footer.terms">Terms</a>
+        <a href="#" data-i18n="footer.contact">Contact</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="i18n.js"></script>
+</body>
+</html>
