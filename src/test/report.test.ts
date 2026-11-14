@@ -84,6 +84,6 @@ test("generated Playwright spec covers only captured profiles and re-checks mark
   assert.match(spec, /toBe\("rtl"\)/);
   assert.match(spec, /data-localelab-currency=\\"USD:349\\"/);
   assert.match(spec, /toHaveAttribute\("lang", \/\^en/);
-  assert.match(spec, /\\\$349\\\.00/, "regex metacharacters in expectations are escaped");
-  assert.match(spec, /\[\\\\s\\\\u00a0\\\\u202f\]US\\\$/, "NBSP in Intl output matches any space");
+  assert.match(spec, /\\\\\$349\\\\\.00/, "regex metacharacters in expectations are escaped");
+  assert.match(spec, /\[\\\\s\\\\u00a0\\\\u202f\]US\\\\\$/, "NBSP in Intl output matches any space");
 });
