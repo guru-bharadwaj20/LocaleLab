@@ -1,0 +1,49 @@
+{
+  "name": "localelab",
+  "version": "0.1.0",
+  "description": "Local-first, multi-locale website QA runner. One URL, many browser realities.",
+  "license": "MIT",
+  "author": "Guru Bharadwaj",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "bin": {
+    "localelab": "dist/cli.js"
+  },
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "fixtures",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "clean": "node -e \"require('node:fs').rmSync('dist',{recursive:true,force:true})\"",
+    "test": "npm run build && node --test dist/test/",
+    "demo": "node dist/cli.js demo",
+    "benchmark": "node dist/cli.js benchmark",
+    "prepare": "npm run build"
+  },
+  "keywords": [
+    "localization",
+    "i18n",
+    "l10n",
+    "playwright",
+    "qa",
+    "testing",
+    "locale",
+    "timezone",
+    "rtl"
+  ],
+  "dependencies": {
+    "playwright": "^1.65.1"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.65.1",
+    "@types/node": "^20.19.0",
+    "typescript": "^5.9.3"
+  }
+}
